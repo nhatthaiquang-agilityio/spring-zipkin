@@ -63,12 +63,17 @@ Run Zipkin UI
 ```
 localhost:9412
 ```
+[Zipkin UI](https://github.com/nhatthai/spring-zipkin/blob/master/images/zipkin-ui.png "Zipkin UI")
+
 
 Notes: We can change port(9412)
 Check README.md in zipkin-ui-server
 ```
 -zipkin.web.port=:9412
 ```
+
+[Eureka](https://github.com/nhatthai/spring-zipkin/blob/master/images/eureka-service.png "Eureka")
+[Config-Service](https://github.com/nhatthai/spring-zipkin/blob/master/images/config-service.png "Config Service")
 
 If you could not see all services in zipkin UI, please run http://localhost:5000 and http://localhost:7000 many times.
 The zipkin web will reload all services.

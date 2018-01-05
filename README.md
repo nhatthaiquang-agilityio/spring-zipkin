@@ -4,19 +4,19 @@ Examples of microservice instrastructures
 This project contains several examples of microservice infrastructures implemented with Spring Boot and Spring Cloud projects. The aim of each project is to provide an end to end example, being able to deploy it without too much hassle.
 
 ### Overview
-+ config-service
++ config-service:
     Load all configs for services via port 8888
 
-+ eureka-service
++ eureka-service:
     Run service via port 8761
 
-+ rating-service
++ rating-service:
     Run service via port 5000
 
-+ student-service
++ student-service:
     Run service via port 7000
 
-+ zipkin-server
++ zipkin-server:
     Run service via port 9411
 
 + zipkin-ui-server

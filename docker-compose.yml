@@ -1,0 +1,71 @@
+version: '2.1'
+services:
+  eureka-service:
+    image: nhatthai/eureka-service:latest
+    depends_on:
+      config-service:
+        condition: service_healthy
+    ports:
+      - 8761:8761
+    links:
+      - "config-service"
+    # wait config server is up
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://config-service:8888/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+
+  zipkin-server:
+    image: nhatthai/zipkin-server:latest
+    depends_on:
+      config-service:
+        condition: service_healthy
+    ports:
+      - 9411:9411
+    links:
+      - "config-service"
+    # wait config server is up
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://config-service:8888/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+
+  rating-service:
+    image: nhatthai/rating-service:latest
+    depends_on:
+      config-service:
+        condition: service_healthy
+    ports:
+      - 5000:5000
+    links:
+      - "config-service"
+    # wait config server is up
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://config-service:8888/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+
+  student-service:
+    image: nhatthai/student-service:latest
+    depends_on:
+      config-service:
+        condition: service_healthy
+    ports:
+      - 7000:7000
+    links:
+      - "config-service"
+    # wait config server is up
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://config-service:8888/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+
+  config-service:
+    image: nhatthai/config-service:latest
+    ports:
+      - 8888:8888
+    restart: always

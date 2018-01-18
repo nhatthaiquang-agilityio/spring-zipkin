@@ -21,6 +21,9 @@ This project contains several examples of microservice infrastructures implement
 
 + zipkin-ui-server
 
++ gateway-service
+    Run service via port 8090
+
 Note: In the example, I don't use config-service but this is a good way.
 Therefore, I keep it in the example. I hope I will apply it in the project.
 
@@ -58,6 +61,22 @@ cd student-service
 mvn spring-boot:run
 ```
 
+### Run in Docker Compose
++ Deploy config-service
+```
+$ cd config-service
+$ mvn clean package
+$ docker build -t nhatthai/config-service:latest
+```
+
++ Deploy eureka-service
+```
+$ cd eureka-service
+$ mvn clean package
+$ docker build -t nhatthai/eureka-service:latest
+```
+
+
 ### Notes:
 Run Zipkin UI
 ```
@@ -78,6 +97,18 @@ Check README.md in zipkin-ui-server
 
 If you could not see all services in zipkin UI, please run http://localhost:5000 and http://localhost:7000 many times.
 The zipkin web will reload all services.
+
+
+#### Config Server
+Run dockerfile, it will get config-repo on https://github.com/nhatthai/config-repo
+```
+--spring.profiles.active=docker"
+```
+
+Get config-repo in config-service/src/main/resources/shared
+```
+--spring.profiles.active=native,docker"
+```
 
 ### Reference
 [Microservice Zipkin Distributes Tracing](http://www.josedab.com/2016/03/09/microservices-zipkin-distributed-tracing/)

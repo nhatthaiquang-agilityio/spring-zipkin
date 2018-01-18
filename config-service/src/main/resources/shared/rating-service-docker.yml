@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: rating-service
+
+server:
+  port: 5000
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-service:8761/eureka

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: config-service
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+  profiles:
+    active: native
+
+server:
+  port: 8888
+
+---
+spring:
+  profiles: docker
+  application:
+    name: config-service
+
+  cloud:
+    config:
+      server:
+        # Using config in local
+        # native:
+        #   search-locations: classpath:/shared
+        git:
+          uri: https://github.com/nhatthai/config-repo
+          basedir: target/config
+
+server:
+  port: 8888

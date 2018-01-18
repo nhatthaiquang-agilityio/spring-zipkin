@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: zipkin-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      uri: http://localhost:8888
+---
+# Using for docker compose
+spring:
+  profiles: docker
+  application:
+    name: zipkin-server
+  cloud:
+    config:
+      uri: http://config-service:8888

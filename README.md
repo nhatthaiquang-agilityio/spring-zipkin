@@ -76,6 +76,33 @@ $ mvn clean package
 $ docker build -t nhatthai/eureka-service:latest
 ```
 
++ Deploy rating-service
+```
+$ cd rating-service
+$ mvn clean package
+$ docker build -t nhatthai/rating-service:latest
+```
+
++ Deploy student-service
+```
+$ cd student-service
+$ mvn clean package
+$ docker build -t nhatthai/student-service:latest
+```
+
++ Deploy gateway-service
+```
+$ cd gateway-service
+$ mvn clean package
+$ docker build -t nhatthai/gateway-service:latest
+```
+
++ Deploy zipkin-server
+```
+$ cd zipkin-server
+$ mvn clean package
+$ docker build -t nhatthai/zipkin-server:latest
+```
 
 ### Notes:
 Run Zipkin UI

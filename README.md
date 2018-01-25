@@ -3,6 +3,13 @@ Examples of microservice instrastructures
 
 This project contains several examples of microservice infrastructures implemented with Spring Boot and Spring Cloud projects. The aim of each project is to provide an end to end example, being able to deploy it without too much hassle.
 
+### History
+    - Config Server: use local or git
+    - Integrate Eureka Service
+    - Integrate Gateway Service
+    - Apply docker-compose
+    - Apply Zipki in docker-compose(Working)
+
 ### Overview
 + config-service:
     Load all configs for services via port 8888

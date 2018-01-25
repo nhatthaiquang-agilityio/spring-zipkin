@@ -1,6 +1,14 @@
 version: '2.1'
 services:
+  #  rabbitmq:
+  #   image: rabbitmq:3-management
+  #   restart: always
+  #   ports:
+  # #    - "5672:5672"
+  #     - "15672:15672"
+
   eureka-service:
+    build: eureka-service/
     image: nhatthai/eureka-service:latest
     depends_on:
       config-service:
@@ -17,6 +25,7 @@ services:
       retries: 10
 
   zipkin-server:
+    build: zipkin-server/
     image: nhatthai/zipkin-server:latest
     depends_on:
       config-service:
@@ -25,6 +34,27 @@ services:
       - 9411:9411
     links:
       - "config-service"
+      - "rating-service"
+      - "student-service"
+    # wait config server is up
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://config-service:8888/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+
+  gateway-service:
+    build: gateway-service/
+    image: nhatthai/gateway-service:latest
+    depends_on:
+      config-service:
+        condition: service_healthy
+    ports:
+      - 8765:8765
+    links:
+      - "config-service"
+      - "rating-service"
+      - "student-service"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]
@@ -33,6 +63,7 @@ services:
       retries: 10
 
   rating-service:
+    build: rating-service/
     image: nhatthai/rating-service:latest
     depends_on:
       config-service:
@@ -49,6 +80,7 @@ services:
       retries: 10
 
   student-service:
+    build: student-service/
     image: nhatthai/student-service:latest
     depends_on:
       config-service:
@@ -65,7 +97,12 @@ services:
       retries: 10
 
   config-service:
+    build: config-service/
     image: nhatthai/config-service:latest
     ports:
       - 8888:8888
     restart: always
+    # links:
+    #   - rabbitmq
+    # depends_on:
+    #   - rabbitmq

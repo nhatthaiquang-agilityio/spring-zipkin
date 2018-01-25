@@ -4,3 +4,11 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-service:8761/eureka
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [trace=%X{X-Trace-Id:-},span=%X{X-Span-Id:-}] [%15.15t] %-40.40logger{39}: %m%n'
+
+spring:
+  zipkin:
+    baseUrl: http://zipkin-server:9411

@@ -34,8 +34,6 @@ services:
       - 9411:9411
     links:
       - "config-service"
-      - "rating-service"
-      - "student-service"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]
@@ -72,6 +70,7 @@ services:
       - 5000:5000
     links:
       - "config-service"
+      - "zipkin-server"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]
@@ -89,6 +88,7 @@ services:
       - 7000:7000
     links:
       - "config-service"
+      - "zipkin-server"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]

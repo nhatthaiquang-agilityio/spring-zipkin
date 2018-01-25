@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: rating-service
-
 server:
   port: 5000
 

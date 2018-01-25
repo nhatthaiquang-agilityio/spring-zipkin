@@ -23,11 +23,11 @@ spring:
     config:
       server:
         # Using config in local
-        # native:
-        #   search-locations: classpath:/shared
-        git:
-          uri: https://github.com/nhatthai/config-repo
-          basedir: target/config
+        native:
+          search-locations: classpath:/shared
+        # git:
+        #   uri: https://github.com/nhatthai/config-repo
+        #   basedir: target/config
 
 server:
   port: 8888

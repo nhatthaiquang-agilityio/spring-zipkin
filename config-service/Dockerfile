@@ -2,6 +2,7 @@ FROM java:8-jre
 
 ADD ./target/configuration-service-0.0.1-SNAPSHOT.jar /app/
 
+# Remove --spring.profiles.active=native if using git config
 ENTRYPOINT ["java", "-Xmx200m", \
     "-jar", "/app/configuration-service-0.0.1-SNAPSHOT.jar",\
     "--spring.profiles.active=native,docker"\

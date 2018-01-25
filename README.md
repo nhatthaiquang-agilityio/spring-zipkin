@@ -7,8 +7,8 @@ This project contains several examples of microservice infrastructures implement
     - Config Server: use local or git
     - Integrate Eureka Service
     - Integrate Gateway Service
+    - Integrate Zipkin
     - Apply docker-compose
-    - Apply Zipki in docker-compose(Working)
 
 ### Overview
 + config-service:

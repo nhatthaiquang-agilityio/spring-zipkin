@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="example" level="#logback.loglevel#"/>
+    <logger name="org.apache.tomcat.util" level="INFO"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.springframework.security" level="WARN"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="springfox" level="WARN"/>
+
+    <root level="#logback.loglevel#">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

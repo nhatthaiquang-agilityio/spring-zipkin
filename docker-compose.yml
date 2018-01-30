@@ -1,11 +1,11 @@
 version: '2.1'
 services:
-  #  rabbitmq:
-  #   image: rabbitmq:3-management
-  #   restart: always
-  #   ports:
-  # #    - "5672:5672"
-  #     - "15672:15672"
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   eureka-service:
     build: eureka-service/
@@ -34,6 +34,7 @@ services:
       - 9411:9411
     links:
       - "config-service"
+      - "rabbitmq"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]
@@ -71,6 +72,7 @@ services:
     links:
       - "config-service"
       - "zipkin-server"
+      - "rabbitmq"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]
@@ -89,6 +91,7 @@ services:
     links:
       - "config-service"
       - "zipkin-server"
+      - "rabbitmq"
     # wait config server is up
     healthcheck:
       test: ["CMD-SHELL", "curl http://config-service:8888/health"]

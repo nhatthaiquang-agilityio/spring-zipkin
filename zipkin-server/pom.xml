@@ -34,12 +34,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
 
         <dependency>
             <groupId>io.zipkin.java</groupId>
             <artifactId>zipkin-autoconfigure-ui</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -59,6 +60,7 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Camden.SR7</version>
+                <!-- <version>Edgware.RELEASE</version> -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
